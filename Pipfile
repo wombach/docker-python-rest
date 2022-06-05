@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+elasticsearch = "*"
+flask = "*"
+flask-restful = "*"
+elasticsearch-dsl = "*"
+flask-httpauth = "*"
+flask-apispec = "*"
+prometheus-flask-exporter = "*"
+m4i-atlas-core = {git = "https://github.com/aureliusenterprise/m4i_atlas_core.git", editable = true}
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

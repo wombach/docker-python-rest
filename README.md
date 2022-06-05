@@ -41,8 +41,10 @@ make kill
 
 Run container with development vars
 ```
-docker run --detach -p 8080:8080 --env ES_INDEX="testindex" --env ES_URL="https://test.westeurope.azure.elastic-cloud.com:9243/" nxtgen-equipment-api
+docker run --detach -p 8080:8080 nxtgen-equipment-api
 ```
+
+access service at http://localhost:8080/api/v1/
 
 management of access token
 https://ginnyfahs.medium.com/github-error-authentication-failed-from-command-line-3a545bfd0ca8

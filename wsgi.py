@@ -1,6 +1,6 @@
-from m4i_atlas_core import ConfigStore
+#from m4i_atlas_core import ConfigStore
 # from m4i_compare import app as compare
-# from m4i_data2model import app as data2model
+#from m4i_data2model import app as data2model
 # from m4i_lineage_model import app as lineage_model
 # from werkzeug.serving import run_simple
 # from werkzeug.wsgi import DispatcherMiddleware

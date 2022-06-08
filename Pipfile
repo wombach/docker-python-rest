@@ -11,6 +11,7 @@ elasticsearch-dsl = "*"
 flask-httpauth = "*"
 flask-apispec = "*"
 prometheus-flask-exporter = "*"
+m4i-backend-core = {git = "https://github.com/aureliusenterprise/m4i_backend_core.git", editable = true}
 m4i-atlas-core = {git = "https://github.com/aureliusenterprise/m4i_atlas_core.git", ref = 'rc-1.0.0', editable = true}
 
 [dev-packages]

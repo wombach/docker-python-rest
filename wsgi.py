@@ -10,6 +10,9 @@ from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from m4i_atlas_config import config
 from flask import Flask
 
+store = ConfigStore.get_instance()
+store.load(config)
+
 app = Flask("api")
 
 app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {

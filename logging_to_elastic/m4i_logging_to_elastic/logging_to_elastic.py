@@ -1,5 +1,5 @@
 from elasticsearch import Elasticsearch
-from flask import Flask
+from flask import Flask, request
 from m4i_atlas_core import ConfigStore
 from m4i_backend_core.auth import requires_auth
 
@@ -9,11 +9,12 @@ store = ConfigStore.get_instance()
 
 
 def write_to_elastic(index_name: str, message: dict):
-    username, password, url_with_port = store.get_many('elastic_username', 'elastic_password', 'elastic_host')
+    username, password, url_with_port, elastic_ca_certs_path = store.get_many('elastic_username', 'elastic_password',
+                                                                         'elastic_host', 'elastic_ca_certs_path')
     connection = Elasticsearch(
         url_with_port,
         basic_auth=(username, password),
-        # verify_certs=False
+        ca_certs=elastic_ca_certs_path
     )
     response = connection.index(index=index_name, document=message)
     return response
@@ -21,7 +22,7 @@ def write_to_elastic(index_name: str, message: dict):
 
 @app.route('/log', methods=['POST'])
 @requires_auth(transparent=True)
-def logging_to_elastic(message, access_token=None):
+def logging_to_elastic(access_token=None):
     """
     This is the endpoint /log which is used to push logs to elastic index "atlas-logging".
     For the frontend the path will be /repository/api/log.
@@ -31,7 +32,7 @@ def logging_to_elastic(message, access_token=None):
     :return: The elastic api response.
     """
     index_name: str = 'atlas-logging'
-    response = write_to_elastic(index_name, message)
+    message = request.get_json(force=True)
+    write_to_elastic(index_name, message)
 
-    return 200, response
 # END logging_to_elastic

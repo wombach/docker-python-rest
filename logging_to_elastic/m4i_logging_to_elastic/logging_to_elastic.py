@@ -34,5 +34,6 @@ def logging_to_elastic(access_token=None):
     index_name: str = 'atlas-logging'
     message = request.get_json(force=True)
     write_to_elastic(index_name, message)
+    return ('', 204)
 
 # END logging_to_elastic

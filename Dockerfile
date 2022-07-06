@@ -3,6 +3,10 @@ LABEL maintainer="andreas.wombacher@aureliusenterprise.com"
 
 RUN pip install pipenv
 
+
+RUN apt-get update
+RUN apt-get -y install graphviz
+
 ADD . /rest-services
 WORKDIR /rest-services
 

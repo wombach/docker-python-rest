@@ -1,3 +1,4 @@
+import json
 from elasticsearch import Elasticsearch
 from flask import Flask, request
 from m4i_atlas_core import ConfigStore
@@ -10,7 +11,7 @@ store = ConfigStore.get_instance()
 
 def write_to_elastic(index_name: str, message: dict):
     username, password, url_with_port, elastic_ca_certs_path = store.get_many('elastic_username', 'elastic_password',
-                                                                         'elastic_host', 'elastic_ca_certs_path')
+                                                                              'elastic_host', 'elastic_ca_certs_path')
     connection = Elasticsearch(
         url_with_port,
         basic_auth=(username, password),
@@ -33,7 +34,8 @@ def logging_to_elastic(access_token=None):
     index_name: str = 'atlas-logging'
     message = request.get_json(force=True)
     write_to_elastic(index_name, message)
-    return ('', 204)
+    return '', 204
+
 
 # END logging_to_elastic
 
@@ -49,7 +51,9 @@ def errors_to_elastic(access_token=None):
     """
     index_name: str = 'atlas-error'
     message = request.get_json(force=True)
-    write_to_elastic(index_name, message)
-    return ('', 204)
+    message['state'] = json.dumps(message['state']) # this is turned into a string because the number of fields are too high for elastic to parse and index. This way we still get to keep the data but it is not searchable
+    write_to_elastic(index_name,  message)
+
+    return '', 204
 
 # END errors_to_elastic

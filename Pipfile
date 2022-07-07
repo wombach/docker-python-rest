@@ -26,6 +26,7 @@ m4i-data-governance-dashboard = { editable = true, path = "./data_governance_das
 m4i-lineage-model = { editable = true, path = "./lineage_model" }
 m4i-metrics = { editable = true, path = "./extra_modules/metrics" }
 m4i-graphviz-layouts = { editable = true, path = "./extra_modules/graphviz_layouts" }
+m4i-logging-to-elastic = { editable = true, path = "./logging_to_elastic" }
 
 [dev-packages]
 

@@ -6,7 +6,7 @@ from m4i_data_governance_dashboard import app as data_governance_dashboard
 from m4i_lineage_model import app as lineage_model
 from m4i_logging_to_elastic import app as elastic_logging
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
-from m4i_lineage_rest_api import app as lineage_rest_api
+# from m4i_lineage_rest_api.app import init_config, flask_app
 
 from m4i_atlas_config import config
 from m4i_elastic_config import config as elastic_config
@@ -15,6 +15,11 @@ from flask import Flask
 store = ConfigStore.get_instance()
 store.load(config)
 store.load(elastic_config)
+# def create_lineage_rest_api_app():
+#     init_config()
+#     app_flask = flask_app()
+#     app_flask.initialize_app()
+#     return app_flask.app
 
 app = Flask("api")
 
@@ -25,6 +30,6 @@ app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
     '/lineage_model': lineage_model,
     '/data_governance': data_governance_dashboard,
     '/logging': elastic_logging,
-    '/lineage_rest_api': lineage_rest_api
+    # '/lineage_rest_api': create_lineage_rest_api_app()
 })
 

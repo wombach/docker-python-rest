@@ -17,6 +17,11 @@ m4i-atlas-core = { git = "https://github.com/aureliusenterprise/m4i_atlas_core.g
 msgpack = "*"
 ujson = "*"
 werkzeug= "==0.16.0"
+#Flask = "*"
+#requests = "*"
+#SQLAlchemy = "*"
+#flask-restx = "*"
+#MarkupSafe = "==2.0.1"
 m4i-atlas-mock = { editable = true, path = "./atlas_mock" }
 m4i-compare = { editable = true, path = "./compare" }
 m4i-consistency-metrics = { editable = true, path = "./consistency_metrics" }
@@ -27,7 +32,8 @@ m4i-lineage-model = { editable = true, path = "./lineage_model" }
 m4i-metrics = { editable = true, path = "./extra_modules/metrics" }
 m4i-graphviz-layouts = { editable = true, path = "./extra_modules/graphviz_layouts" }
 m4i-logging-to-elastic = { editable = true, path = "./logging_to_elastic" }
-m4i-lineage-rest-api = { git = "https://github.com/aureliusenterprise/m4i_atlas_core.git", ref = 'rc-1.0.0', editable = true }
+#m4i-lineage-rest-api = { git = "https://github.com/aureliusenterprise/linage_restAPI.git", ref = 'rc-1.0.0', editable = true }
+
 
 [dev-packages]
 

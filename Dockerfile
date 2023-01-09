@@ -5,7 +5,8 @@ RUN pip install pipenv==2022.8.5
 
 
 RUN apt-get update
-RUN apt-get -y install graphviz
+RUN apt-get -y install graphviz && \
+    apt-get install -y cargo
 
 ADD . /rest-services
 WORKDIR /rest-services

@@ -8,6 +8,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         "flask",
+        "keycloak-client",
         "python-jose[pycryptodome]",
     ],
     zip_safe=False

@@ -1,11 +1,12 @@
 FROM python:3.7.2
 LABEL maintainer="andreas.wombacher@aureliusenterprise.com"
 
-RUN pip install pipenv
+RUN pip install pipenv==2022.8.5
 
 
 RUN apt-get update
-RUN apt-get -y install graphviz
+RUN apt-get -y install graphviz && \
+    apt-get install -y cargo
 
 ADD . /rest-services
 WORKDIR /rest-services

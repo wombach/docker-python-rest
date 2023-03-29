@@ -15,7 +15,7 @@ def write_to_elastic(index_name: str, message: dict):
     connection = Elasticsearch(
         url_with_port,
         basic_auth=(username, password),
-        ca_certs=elastic_ca_certs_path
+        #ca_certs=elastic_ca_certs_path
     )
     response = connection.index(index=index_name, document=message)
     return response

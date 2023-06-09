@@ -12,11 +12,18 @@ store = ConfigStore.get_instance()
 def write_to_elastic(index_name: str, message: dict):
     username, password, url_with_port, elastic_ca_certs_path = store.get_many('elastic_username', 'elastic_password',
                                                                               'elastic_host', 'elastic_ca_certs_path')
-    connection = Elasticsearch(
-        url_with_port,
-        basic_auth=(username, password),
-        #ca_certs=elastic_ca_certs_path
-    )
+    if elastic_ca_certs_path == None:
+        connection = Elasticsearch(
+            url_with_port,
+            basic_auth=(username, password),
+        )
+    else:
+        connection = Elasticsearch(
+            url_with_port,
+            basic_auth=(username, password),
+            ca_certs=elastic_ca_certs_path
+        )
+
     response = connection.index(index=index_name, document=message)
     return response
 

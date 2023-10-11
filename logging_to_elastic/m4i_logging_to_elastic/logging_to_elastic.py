@@ -3,11 +3,12 @@ from elasticsearch import Elasticsearch
 from flask import Flask, request
 from m4i_atlas_core import ConfigStore
 from m4i_backend_core.auth import requires_auth
+from m4i_backend_core.shared import register as register_shared
 
 app = Flask(__name__)
 
 store = ConfigStore.get_instance()
-
+register_shared(app)
 
 def write_to_elastic(index_name: str, message: dict):
     username, password, url_with_port, elastic_ca_certs_path = store.get_many('elastic_username', 'elastic_password',

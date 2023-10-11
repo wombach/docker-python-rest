@@ -39,12 +39,11 @@ docker push wombach/docker-python-rest:1.0.5
 
 deployed REST APIs
  - '/data2model': data2model,
- - '/consistency_metrics': consistency_metrics,
  - '/compare': compare,
- -  '/lineage_model': lineage_model,
- -  '/data_governance': data_governance_dashboard,
- -  '/logging': elastic_logging,
- -  '/lineage_rest_api': register_get_app()
+ - '/lineage_model': lineage_model,
+ - '/data_governance': data_governance_dashboard,
+ - '/logging': elastic_logging,
+ - '/lineage': register_get_app()
 
 relevant links:
  - http://localhost:5000/lineage/heartbeat

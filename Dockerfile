@@ -1,4 +1,4 @@
-FROM python:3.7.2
+FROM python:3.7.17
 LABEL maintainer="andreas.wombacher@aureliusenterprise.com"
 
 RUN pip install pipenv==2022.8.5

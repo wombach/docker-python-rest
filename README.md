@@ -34,8 +34,8 @@ access service at ``http://localhost:5000/{service_name}``
 Check if the service is running at ``http://localhost:5000/{service_name}/heartbeat``
 
 # build and push docker container
-docker build -t wombach/docker-python-rest:1.0.5 .
-docker push wombach/docker-python-rest:1.0.5 
+docker build -t wombach/docker-python-rest:1.0.6 .
+docker push wombach/docker-python-rest:1.0.6 
 
 deployed REST APIs
  - '/data2model': data2model,
